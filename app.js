@@ -39,6 +39,7 @@ const addPhraseToDisplay = arr => {
 }
 
     document.getElementById('phrase').innerHTML = '<ul> ${addPhraseToDisplay(phrases)} </ul>';
+    ul.appendChild(li);
 
 // check if a letter is in the phrase
 const checkLetter = button => {
