@@ -28,17 +28,22 @@ console.log(phraseArray);
 
 // adds the letters of a string to the display
 const addPhraseToDisplay = arr => {
-    for ( let i = 0; i < phrases.length; i++) {
+    for ( let i = 0; i < arr.length; i++) {
         let li = document.createElement('li');
-        li.textContent = phraseArray.value;
+        li.textContent = arr.value;
 
-        If (li.textContent === ' '); {
+        if (li.textContent === ' ') {
             li.className = 'space';
         } else {
                 li.className = 'letter';
         }
-        
+        let ul = document.getElementsById('phrase');
+        ul.appendChild(li);
+
+        return phraseArray;
     }
+
+   
 }
 
 
