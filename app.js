@@ -3,7 +3,7 @@ const phraseDiv = document.getElementById('phrase');
 const a = document.querySelector('.btn__reset');
 const missed = 0;
 const startDiv = document.querySelector('.start');
-//credit
+//@Sarah (she/her) showed me the correct syntax my arrays should be in for this challenge, as well as suggesting using the split() method on slack.
 const phrases = [
     "may the force be with you",
     "this is the way",
@@ -19,17 +19,19 @@ a.addEventListener('click', () => {
 //gets a random phrase from my 'phrases' array
 const getRandomPhraseAsArray = arr => {
     //the idea for using this random number generator function was suggested to me on slack by @Phillip
+    //the code within the code block was adjusted from code show to me by @Sarah (she/her)
     const randomNum = Math.floor(Math.random() * arr.length);
     let phraseArray = arr[randomNum].split(' ');
     return phraseArray;
-}
-//call the function with phrases as an input
-console.log(phraseArray);
+};
+getRandomPhraseAsArray(phrases);
+
 
 // adds the letters of a string to the display
 const addPhraseToDisplay = arr => {
+        let items = ''; 
     for ( let i = 0; i < arr.length; i++) {
-        let li = document.createElement('li');
+        items += `<li>${ arr[i] }</li>`
         li.textContent = arr.value;
 
         if (li.textContent === ' ') {
@@ -37,15 +39,20 @@ const addPhraseToDisplay = arr => {
         } else {
                 li.className = 'letter';
         }
-        let ul = document.getElementsById('phrase');
         ul.appendChild(li);
 
-        return phraseArray;
     }
 
-   
-}
+    return items;
+};
 
+document.querySelector('ul').innerHTML = `
+<ul>
+  ${addPhraseToDisplay(phraseArray)}
+</ul>
+`;
+
+addPhraseToDisplay(phraseArray);
 
 
 // check if a letter is in the phrase
