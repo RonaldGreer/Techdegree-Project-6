@@ -7,6 +7,8 @@ const keyboard = document.querySelector('#qwerty');
 const letters = document.querySelectorAll('.letter');
 const misses = document.querySelector('.misses');
 //@Sarah (she/her) showed me the correct syntax my arrays should be in for this challenge, as well as suggesting using the split() method on slack.
+
+
 const phrases = [
     "may the force be with you",
     "this is the way",
@@ -15,10 +17,12 @@ const phrases = [
     "hello there"
 ];
 
+
 // listens for the start game button to be pressed
 a.addEventListener('click', () => {
     startDiv.style.display = 'none';
 });
+
 
 //gets a random phrase from my 'phrases' array
 const getRandomPhraseAsArray = arr => {
@@ -29,9 +33,12 @@ const getRandomPhraseAsArray = arr => {
     return phraseArray;
 };
 getRandomPhraseAsArray(phrases);
+
+
 //credit
 let li = document.querySelector('li');
 let ul = document.querySelector('ul');
+
 // adds the letters of a string to the display
 const addPhraseToDisplay = arr => {
         let items = ''; 
