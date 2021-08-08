@@ -5,7 +5,6 @@ let missed = 0;
 const startDiv = document.querySelector('.start');
 const keyboard = document.querySelector('#qwerty');
 const letters = document.querySelectorAll('.letter');
-const misses = document.querySelector('.misses');
 //@Sarah (she/her) showed me the correct syntax my arrays should be in for this challenge, as well as suggesting using the split() method on slack.
 
 
@@ -29,7 +28,7 @@ const getRandomPhraseAsArray = arr => {
     //the idea for using this random number generator function was suggested to me on slack by @Phillip
     //the code within the code block was adjusted from code show to me by @Sarah (she/her)
     const randomNum = Math.floor(Math.random() * arr.length);
-    let phraseArray = arr[randomNum].split(' ');
+    let phraseArray = arr[randomNum].split("");
     return phraseArray;
 };
 getRandomPhraseAsArray(phrases);
@@ -57,6 +56,7 @@ const addPhraseToDisplay = arr => {
             li.className = 'letter';
     }
 
+
     return items;
 };
 let phraseArray = getRandomPhraseAsArray(phrases);
@@ -66,6 +66,7 @@ document.querySelector('ul').innerHTML = `
 `;
 
 addPhraseToDisplay(phraseArray);
+
 
 
 // check if a letter is in the phrase
@@ -86,7 +87,7 @@ const checkLetter = button => {
 
 // listen for the onscreen keyboard to be clicked
 keyboard.addEventListener('click', e => {
-
+    const heart = document.getElementsByClassName('tries');
      //The following code is from and based off of the office hours session for the unit 6 project on slack(hosted by @Amber(she/her)
     if (e.target.tagName === "BUTTON") {
         e.target.className = 'chosen';
@@ -94,8 +95,10 @@ keyboard.addEventListener('click', e => {
         const match = checkLetter(e.target.textContent.toLowerCase());
         if (match === null) {
           missed++;
-          misses.textContent = missed;
+          //heart icon
+          heart.src = "images/lostHeart.png";
         }
+        //checkWin() function call
       }
 });
 
@@ -103,4 +106,8 @@ keyboard.addEventListener('click', e => {
 
 // check if the game has been won or lost
 const checkWin = () => {
+    const class1 = document.getElementsByClassName('letter');
+    const class2 = document.getElementsByClassName('show');
+    if 
+
 }
