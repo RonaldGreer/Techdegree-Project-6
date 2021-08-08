@@ -96,7 +96,6 @@ keyboard.addEventListener('click', e => {
         if (match === null) {
           missed++;
           //heart icon
-          heart.src = "images/lostHeart.png";
         }
         //checkWin() function call
       }
@@ -108,6 +107,6 @@ keyboard.addEventListener('click', e => {
 const checkWin = () => {
     const class1 = document.getElementsByClassName('letter');
     const class2 = document.getElementsByClassName('show');
-    if 
+    
 
 }
