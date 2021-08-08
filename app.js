@@ -34,7 +34,7 @@ const getRandomPhraseAsArray = arr => {
 getRandomPhraseAsArray(phrases);
 
 
-//credit
+// After encountering errors in the console @Amber (she/her) suggested declaring these variables before using them on slack
 let li = document.querySelector('li');
 let ul = document.querySelector('ul');
 
@@ -59,8 +59,10 @@ const addPhraseToDisplay = arr => {
 
     return items;
 };
+//variable to fix scoping issues was suggested by @Amber (she/her) on slack
 let phraseArray = getRandomPhraseAsArray(phrases);
-//
+
+
 document.querySelector('ul').innerHTML = `
   ${addPhraseToDisplay(phraseArray)}
 `;
@@ -95,9 +97,9 @@ keyboard.addEventListener('click', e => {
         const match = checkLetter(e.target.textContent.toLowerCase());
         if (match === null) {
           missed++;
-          //heart icon
+          //heart icon code
         }
-        //checkWin() function call
+        checkWin();
       }
 });
 
@@ -107,6 +109,18 @@ keyboard.addEventListener('click', e => {
 const checkWin = () => {
     const class1 = document.getElementsByClassName('letter');
     const class2 = document.getElementsByClassName('show');
+    const titleCard = document.getElementsByClassName('title');
+    const overlay = document.getElementById('overlay');
+    if (class1.length === class2.length) {
+        startDiv.classList.add('win');
+        titleCard.textContent = 'You Win';
+        overlay.display = 'flex';
+    }
+    if (missed.value > 4 ) {
+        startDiv.classList.add('lose');
+        titleCard.textContent = 'You Lose';
+        overlay.display = 'flex';
+    }
     
 
 }
