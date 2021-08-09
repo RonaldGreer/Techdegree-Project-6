@@ -1,10 +1,8 @@
 const div = document.getElementById('qwerty');
 const phraseDiv = document.getElementById('phrase');
 const a = document.querySelector('.btn__reset');
-let missed = 0;
 const startDiv = document.querySelector('.start');
 const keyboard = document.querySelector('#qwerty');
-const letters = document.querySelectorAll('.letter');
 const heart = document.getElementsByClassName('tries');
 //@Sarah (she/her) showed me the correct syntax my arrays should be in for this challenge, as well as suggesting using the split() method on slack.
 
@@ -43,10 +41,15 @@ const addPhraseToDisplay = arr => {
         let items = ''; 
     for ( let i = 0; i < arr.length; i++) {
         const list = document.createElement("li");
-        const node = document.createTextNode(arr.value); 
-        list.appendChild(node);
-          
-        const existing = document.getElementsByTagName("ul");
+        //
+        list.textContent = arr[i];
+        //if statement here
+        if (list.textContent === ' ') {
+            list.className = 'space';
+        } else {
+                list.className = 'letter';
+        }
+        const existing = document.querySelector("ul");
         existing.appendChild(list);
           
           
@@ -57,14 +60,12 @@ const addPhraseToDisplay = arr => {
 //variable to fix scoping issues was suggested by @Amber (she/her) on slack
 let phraseArray = getRandomPhraseAsArray(phrases);
 
-
-document.querySelector('ul').innerHTML = `
-  ${addPhraseToDisplay(phraseArray)}
-`;
-
 addPhraseToDisplay(phraseArray);
 
 
+const letters = document.querySelectorAll('.letter');
+const misses = document.querySelector('.misses');
+let missed = 0;
 
 // check if a letter is in the phrase
 const checkLetter = button => {
@@ -79,9 +80,10 @@ const checkLetter = button => {
         }
     }
     return matched;
-}
+};
 
 
+//work on this
 // listen for the onscreen keyboard to be clicked
 keyboard.addEventListener('click', e => {
      //The following code is from and based off of the office hours session for the unit 6 project on slack(hosted by @Amber(she/her)
@@ -98,7 +100,7 @@ keyboard.addEventListener('click', e => {
 });
 
 
-
+//work on this
 // check if the game has been won or lost
 const checkWin = () => {
     const class1 = document.getElementsByClassName('letter');
