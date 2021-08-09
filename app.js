@@ -5,6 +5,7 @@ let missed = 0;
 const startDiv = document.querySelector('.start');
 const keyboard = document.querySelector('#qwerty');
 const letters = document.querySelectorAll('.letter');
+const heart = document.getElementsByClassName('tries');
 //@Sarah (she/her) showed me the correct syntax my arrays should be in for this challenge, as well as suggesting using the split() method on slack.
 
 
@@ -35,29 +36,23 @@ getRandomPhraseAsArray(phrases);
 
 
 // After encountering errors in the console @Amber (she/her) suggested declaring these variables before using them on slack
-let li = document.querySelector('li');
-let ul = document.querySelector('ul');
+
 
 // adds the letters of a string to the display
 const addPhraseToDisplay = arr => {
         let items = ''; 
     for ( let i = 0; i < arr.length; i++) {
-        items += `<li>${ arr[i] }</li>`
-        li.textContent = arr.value;
-
-
-        ul.appendChild(li);
-
-    }
-
-    if (li.textContent === ' ') {
-        li.className = 'space';
-    } else {
-            li.className = 'letter';
+        const list = document.createElement("li");
+        const node = document.createTextNode(arr.value); 
+        list.appendChild(node);
+          
+        const existing = document.getElementsByTagName("ul");
+        existing.appendChild(list);
+          
+          
     }
 
 
-    return items;
 };
 //variable to fix scoping issues was suggested by @Amber (she/her) on slack
 let phraseArray = getRandomPhraseAsArray(phrases);
@@ -89,7 +84,6 @@ const checkLetter = button => {
 
 // listen for the onscreen keyboard to be clicked
 keyboard.addEventListener('click', e => {
-    const heart = document.getElementsByClassName('tries');
      //The following code is from and based off of the office hours session for the unit 6 project on slack(hosted by @Amber(she/her)
     if (e.target.tagName === "BUTTON") {
         e.target.className = 'chosen';
