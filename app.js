@@ -33,17 +33,14 @@ const getRandomPhraseAsArray = arr => {
 getRandomPhraseAsArray(phrases);
 
 
-// After encountering errors in the console @Amber (she/her) suggested declaring these variables before using them on slack
 
 
 // adds the letters of a string to the display
 const addPhraseToDisplay = arr => {
-        let items = ''; 
     for ( let i = 0; i < arr.length; i++) {
+        //some of the code in this function was suggested by @Brian Jensen (he/him) on slack, ideas were also suggested by @Rohald (he/him)
         const list = document.createElement("li");
-        //
         list.textContent = arr[i];
-        //if statement here
         if (list.textContent === ' ') {
             list.className = 'space';
         } else {
@@ -94,30 +91,32 @@ keyboard.addEventListener('click', (e) => {
         if (match === null) {
           missed++;
           //heart icon code
+          document.querySelector('img').src = "images/lostHeart.png";
         }
         checkWin();
       }
 });
 
 
-//work on this
+
 // check if the game has been won or lost
 const checkWin = () => {
-    //const class1 = document.getElementsByClassName('letter');
     const class1 = document.getElementsByClassName('letter');
     const class2 = document.getElementsByClassName('show');
     const titleCard = document.getElementById('overlay');
     if (class1.length === class2.length) {
         startDiv.classList.replace('start', 'win');
-        //newWord.textContent("You Win");
         titleCard.style = 'display';
         startDiv.display = 'flex';
+        document.querySelector('h2').innerHTML = "you win!";
+        a.style.display = 'none';
     }
-    if (missed.value === '5' ) {
+    if (missed === 5 ) {
         startDiv.classList.replace('start', 'lose');
-        //document.getElementsByClassName('title').textContent("You Lose");
         titleCard.style = 'display';
         startDiv.display = 'flex';
+        document.querySelector('h2').innerHTML = "you lose!";
+        a.style.display = 'none';
     }
     
 
