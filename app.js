@@ -62,7 +62,7 @@ let phraseArray = getRandomPhraseAsArray(phrases);
 
 addPhraseToDisplay(phraseArray);
 
-
+//const keyboard = document.querySelector('#qwerty');(div)
 const letters = document.querySelectorAll('.letter');
 const misses = document.querySelector('.misses');
 let missed = 0;
@@ -85,7 +85,7 @@ const checkLetter = button => {
 
 //work on this
 // listen for the onscreen keyboard to be clicked
-keyboard.addEventListener('click', e => {
+keyboard.addEventListener('click', (e) => {
      //The following code is from and based off of the office hours session for the unit 6 project on slack(hosted by @Amber(she/her)
     if (e.target.tagName === "BUTTON") {
         e.target.className = 'chosen';
@@ -103,19 +103,21 @@ keyboard.addEventListener('click', e => {
 //work on this
 // check if the game has been won or lost
 const checkWin = () => {
+    //const class1 = document.getElementsByClassName('letter');
     const class1 = document.getElementsByClassName('letter');
     const class2 = document.getElementsByClassName('show');
-    const titleCard = document.getElementsByClassName('title');
-    const overlay = document.getElementById('overlay');
+    const titleCard = document.getElementById('overlay');
     if (class1.length === class2.length) {
-        startDiv.classList.add('win');
-        titleCard.textContent = 'You Win';
-        overlay.display = 'flex';
+        startDiv.classList.replace('start', 'win');
+        //newWord.textContent("You Win");
+        titleCard.style = 'display';
+        startDiv.display = 'flex';
     }
-    if (missed.value > 4 ) {
-        startDiv.classList.add('lose');
-        titleCard.textContent = 'You Lose';
-        overlay.display = 'flex';
+    if (missed.value === '5' ) {
+        startDiv.classList.replace('start', 'lose');
+        //document.getElementsByClassName('title').textContent("You Lose");
+        titleCard.style = 'display';
+        startDiv.display = 'flex';
     }
     
 
