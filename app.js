@@ -89,9 +89,9 @@ keyboard.addEventListener('click', (e) => {
         e.target.disabled = true;
         const match = checkLetter(e.target.textContent.toLowerCase());
         if (match === null) {
+          document.querySelectorAll('img')[missed].src = "images/lostHeart.png";
           missed++;
-          //heart icon code
-          document.querySelector('img').src = "images/lostHeart.png";
+          //@Brian Jensen (he/him) suggested using the querySelectorAll selector and using missed as the index value.
         }
         checkWin();
       }
